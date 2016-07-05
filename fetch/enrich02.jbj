@@ -1,0 +1,22 @@
+{
+	"$uri" : {
+		"get" : "contient"
+	},
+	"$format" : {
+		"set" : "csv"
+	},
+	"$params" : {
+		"inject" : {
+			"alt<" : {
+				"get" : "format"
+			}
+		},
+		"querystring" : true
+	},
+	"$records" : {
+		"get" : ["uri","params"],
+		"join": "?",
+		"fetch": true,
+		"parseCSVFile": ","
+	}
+}

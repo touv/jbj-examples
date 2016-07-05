@@ -1,0 +1,31 @@
+{
+	"$uri" : {
+		"set" : "http://api.crossref.org/works"
+	},
+	"$format" : {
+		"set" : "jsonld"
+	},
+	"$params" : {
+		"inject" : {
+			"order" : "asc",
+			"query<" : {
+				"get" : "auteur"
+			},
+			"sort<" : {
+				"get" : "type"
+			}
+		},
+		"querystring" : true
+	},
+	"$records" : {
+		"get" : ["uri","params"],
+		"join": "?",
+		"fetch": true,
+		"parseJSON": true
+	},
+	"get" : "records.message.items",
+	"foreach" : {
+		"get" : ["DOI", "title.0"]
+	},
+	"csv": "\t"
+}
